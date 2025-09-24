@@ -1,0 +1,25 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title%}{% endblock %}</title>
+    <link rel="stylesheet" href="{% static 'main/css/main.css' %}"
+</head>
+<body>
+    <aside>
+        <img src="{% static 'main/img/robot.png' %}" alt="robot"
+        <spam class="logo">mgkeit</span>
+            <h3>navig</h3>
+            <ul>
+                <a href=""><li>main</li></a>
+                <a href=""><li>about</li></a>
+            </ul>
+    </aside>
+    <main>
+        {% block content %}
+        {% endblock  %}
+    </main>
+</body>
+</html>
