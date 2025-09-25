@@ -1,0 +1,28 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title%}{% endblock %}</title>
+    <link rel="stylesheet" href="{% static '/main/css/main.css' %}"
+</head>
+<body>
+    <header class="header">
+        <a href="{% url 'home' %}"><img src="{% static 'main/img/logo_full.svg' %}" alt="logo"></a>
+        <a href="{% url 'about' %}">about</a>
+        <a href="{% url 'about' %}">Регестрация</a>
+        <a href="{% url 'about' %}">Вход</a>
+    </header>
+    <main>
+        {% block content %}
+        {% endblock  %}
+        {% block info %}
+        {% endblock  %}
+        {% block select %}
+        {% endblock  %}
+        {% block place %}
+        {% endblock  %}
+    </main>
+</body>
+</html>
