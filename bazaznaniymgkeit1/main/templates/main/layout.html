@@ -14,6 +14,8 @@
         <a class="log" href="{% url 'home' %}">Вход</a>
     </header>
     <main>
+        {% block selles %}
+        {% endblock  %}
         {% block content %}
         {% endblock  %}
         {% block info %}
