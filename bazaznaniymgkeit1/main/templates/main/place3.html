@@ -4,3 +4,22 @@
 {% block content %}
 <h1>Центр творчества и дизайна (Коломенская, 5к3)</h1>
 {% endblock %}
+
+{% block selles %}
+<h1 class="hhh1">Выбери свой курс</h1>
+<div> <a class="k1p3" href="{% url 'k1p3' %}">
+       1 курс
+    </a>
+    
+   <a class="k2p3" href="{% url 'k2p3' %}">
+        2 курс
+    </a>
+    
+   <a class="k3p3" href="{% url 'k3p3' %}">
+        3 курс
+    </a>
+    
+    <a class="k4p3" href="{% url 'k4p3' %}">
+        4 курс
+    </a></div>
+{% endblock %}

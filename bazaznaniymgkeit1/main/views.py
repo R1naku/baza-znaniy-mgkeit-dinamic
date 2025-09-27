@@ -39,7 +39,7 @@ def k3p2(request):
     return render(request, 'main/p2/k3p2.html')
 
 def k4p2(request):
-    return render(request, 'main/p3/k4p2.html')
+    return render(request, 'main/p2/k4p2.html')
 
 def k1p3(request):
     return render(request, 'main/p3/k1p3.html')
