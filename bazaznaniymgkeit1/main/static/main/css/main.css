@@ -72,6 +72,29 @@ body {
     text-align: center;
 }
 
+.selk {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.k1p1, .k2p1, .k3p1, .k4p1, .k1p2, .k2p2, .k3p2, .k4p2, .k1p3, .k2p3, .k3p3, .k4p3, .k1p4, .k2p4, .k3p4, .k4p4, .l1k1p1, .l2k1p1, .l3k1p1, .l4k1p1, .l1k2p1, .l2k2p1, .l3k2p1, .l4k2p1, .l1k3p1, .l2k3p1, .l3k3p1, .l4k3p1, .l1k4p1, .l2k4p1, .l3k4p1, .l4k4p1, .l1k1p2, .l2k1p2, .l3k1p2, .l4k1p2, .l1k2p2, .l2k2p2, .l3k2p2, .l4k2p2, .l1k3p2, .l2k3p2, .l3k3p2, .l4k3p2, .l1k4p2, .l2k4p2, .l3k4p2, .l4k4p2, .l1k1p3, .l2k1p3, .l3k1p3, .l4k1p3, .l1k2p3, .l2k2p3, .l3k2p3, .l4k2p3, .l1k3p3, .l2k3p3, .l3k3p3, .l4k3p3, .l1k4p3, .l2k4p3, .l3k4p3, .l4k4p3, .l1k1p4, .l2k1p4, .l3k1p4, .l4k1p4, .l1k2p4, .l2k2p4, .l3k2p4, .l4k2p4, .l1k3p4, .l2k3p4, .l3k3p4, .l4k3p4, .l1k4p4, .l2k4p4, .l3k4p4, .l4k4p4{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #fff;
+    height: 200px;
+    border-radius: 10px;
+    font-size: 25pt;
+    padding: 40px;
+    color: #000000;
+    border: 2px solid #000000;
+    text-align: center;
+}
+
 .pl1 { background: #ffffff; border-color: #008cff; }
 .pl2 { background: #ffffff; border-color: #d900ff; }
 .pl3 { background: #ffffff; border-color: #8400ff; }

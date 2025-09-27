@@ -7,3 +7,31 @@
     <spam class="logo"></span>
     </div>
 {% endblock %}
+{% extends 'main/layout.html' %}
+{% load static %}
+
+{% block content %}
+<div class="content">
+    <h1>База знаний МГКЭИТ</h1>
+    <img src="{% static 'main/img/robot.png' %}" alt="robot"
+    <spam class="logo"></span>
+    </div>
+{% endblock %}
+{% block selles %}
+<h1 class="hhh1">Выбери нужную тебе тему</h1>
+<div class="selk"> <a class="t1l4k1p2" href="{% url 't1l4k1p2' %}">
+       тема1
+    </a>
+    
+   <a class="t2l4k1p2" href="{% url 't2l4k1p2' %}">
+        тема2
+    </a>
+    
+   <a class="t3l4k1p2" href="{% url 't3l4k1p2' %}">
+        тема3
+    </a>
+    
+    <a class="t4l4k1p2" href="{% url 't4l4k1p2' %}">
+        тема4
+    </a></div>
+{% endblock %}
