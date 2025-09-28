@@ -1,0 +1,21 @@
+{% extends 'main/layout.html' %}
+{% load static %}
+
+{% block selles %}
+<h1 class="hhh1">Выбери нужный тебе предмет</h1>
+<div class="selk"> <a class="l1k4p4" href="{% url 'l1k4p4' %}">
+       Биология
+    </a>
+    
+   <a class="l2k4p4" href="{% url 'l2k4p4' %}">
+        География
+    </a>
+    
+   <a class="l3k4p4" href="{% url 'l3k4p4' %}">
+        Математика
+    </a>
+    
+    <a class="l4k4p4" href="{% url 'l4k4p4' %}">
+        Химия
+    </a></div>
+{% endblock %}

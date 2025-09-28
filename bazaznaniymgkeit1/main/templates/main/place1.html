@@ -1,0 +1,25 @@
+{% extends 'main/layout.html' %}
+{% load static %}
+
+{% block content %}
+<h1>Центр программирования и кибербезопасности (Ак. Миллионщикова, 20)</h1>
+{% endblock %}
+
+{% block selles %}
+<h1 class="hhh1">Выбери свой курс</h1>
+<div class="selk"> <a class="k1p1" href="{% url 'k1p1' %}">
+       1 курс
+    </a>
+    
+   <a class="k2p1" href="{% url 'k2p1' %}">
+        2 курс
+    </a>
+    
+   <a class="k3p1" href="{% url 'k3p1' %}">
+        3 курс
+    </a>
+    
+    <a class="k4p1" href="{% url 'k4p1' %}">
+        4 курс
+    </a></div>
+{% endblock %}
