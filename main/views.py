@@ -2,6 +2,7 @@ from django.contrib import messages
 from django.contrib.auth import login, authenticate, logout
 from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth.decorators import login_required
+from django.contrib.auth.models import User
 from django.http import Http404
 from .forms import RegistForm, LoginForm
 
@@ -23,16 +24,27 @@ def login_view(request): #вход в профиль
     if request.method == 'POST':
         form = LoginForm(request.POST)
         if form.is_valid():
-            username = form.cleaned_data['username']
+            username_or_email = form.cleaned_data['username']
             password = form.cleaned_data['password']
-            user = authenticate(request, username=username, password=password)
+            
+            # Попытка входа по логину
+            user = authenticate(request, username=username_or_email, password=password)
+            
+            # Если не получилось, попробуем по email
+            if user is None:
+                try:
+                    user_obj = User.objects.get(email=username_or_email)
+                    user = authenticate(request, username=user_obj.username, password=password)
+                except User.DoesNotExist:
+                    user = None
             
             if user is not None:
                 login(request, user)
-                messages.success(request, f'Добро пожаловать, {user.first_name}!')
-                return redirect('index')
+                welcome_name = user.first_name if user.first_name else user.username
+                messages.success(request, f'Добро пожаловать, {welcome_name}!')
+                return redirect('home')
             else:
-                messages.error(request, 'Неверный логин или пароль')
+                messages.error(request, 'Неверный логин/email или пароль')
     else:
         form = LoginForm()
     
