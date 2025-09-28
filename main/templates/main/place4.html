@@ -1,0 +1,26 @@
+{% extends 'main/layout.html' %}
+{% load static %}
+
+{% block content %}
+<h1>Центр ИТ.Бирюлёво (Харьковский пр-д, 5А)</h1>
+{% endblock %}
+
+
+{% block selles %}
+<h1 class="hhh1">Выбери свой курс</h1>
+<div class="selk"> <a class="k1p4" href="{% url 'k1p4' %}">
+       1 курс
+    </a>
+    
+   <a class="k2p4" href="{% url 'k2p4' %}">
+        2 курс
+    </a>
+    
+   <a class="k3p4" href="{% url 'k3p4' %}">
+        3 курс
+    </a>
+    
+    <a class="k4p4" href="{% url 'k4p4' %}">
+        4 курс
+    </a></div>
+{% endblock %}
