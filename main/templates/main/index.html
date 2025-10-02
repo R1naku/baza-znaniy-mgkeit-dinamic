@@ -8,7 +8,7 @@
 {% block content %}
 <div class="content">
     <h1>База знаний МГКЭИТ</h1>
-    <img src="{% static 'main/img/robot.png' %}" alt="robot"
+    <img src="{% static 'main/img/robot.png' %}" alt="robot">
     <span class="logo"></span>
     </div>
 {% endblock %}
@@ -21,24 +21,13 @@
 {% endblock %}
 {% block place %}
 <div class="places-grid">
-    <a class="pl1" href="{% url 'place1' %}">
-        Центр программирования и безопасности <br> 
-        (Академика Миллионщикова, д. 20)
+    {% for place in places %}
+    <a class="pl{{ forloop.counter }}" href="{% url 'place_detail' place.slug %}" style="border-color: {{ place.color }};">
+        {{ place.name }} <br> 
+        ({{ place.address }})
     </a>
-    
-    <a class="pl2" href="{% url 'place2' %}">
-        Центр городских технологий <br> 
-        (Судостроительная, 48)
-    </a>
-    
-    <a class="pl3" href="{% url 'place3' %}">
-        Центр творчества и дизайна <br> 
-        (Коломенская, 5к3)
-    </a>
-    
-    <a class="pl4" href="{% url 'place4' %}">
-        Центр ИТ.Бирюлёво <br> 
-        (Харьковский пр-д, 5А)
-    </a>
+    {% empty %}
+    <p>Площадки пока не добавлены. Добавьте их через админ-панель.</p>
+    {% endfor %}
 </div>
 {% endblock %}

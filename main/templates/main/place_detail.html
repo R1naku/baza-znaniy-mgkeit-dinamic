@@ -1,0 +1,24 @@
+{% extends 'main/layout.html' %}
+{% load static %}
+
+{% block title %}{{ place.name }} - База знаний МГКЭИТ{% endblock %}
+
+{% block content %}
+<h1>{{ place.name }}</h1>
+<p>{{ place.address }}</p>
+{% endblock %}
+
+{% block selles %}
+<h1 class="hhh1">Выбери свой курс</h1>
+<div class="selk">
+    {% for course in courses %}
+    <a class="k{{ course.number }}p{{ forloop.counter }}" 
+       href="{% url 'course_detail' place.slug course.number %}"
+       style="border-color: {{ place.color }};">
+        {{ course.number }} курс
+    </a>
+    {% empty %}
+    <p>Курсы пока не добавлены для этой площадки.</p>
+    {% endfor %}
+</div>
+{% endblock %}

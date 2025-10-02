@@ -1,0 +1,87 @@
+{% extends 'main/layout.html' %}
+{% load static %}
+
+{% block title %}{{ topic.title }} - База знаний МГКЭИТ{% endblock %}
+
+{% block content %}
+<div class="content">
+    <h1>{{ topic.title }}</h1>
+    <div class="topic-content">
+        {{ topic.content|linebreaks }}
+    </div>
+</div>
+{% endblock %}
+
+{% block selles %}
+{% if questions %}
+<h2 class="sel">Тест по теме</h2>
+<form id="test-form" method="post" action="{% url 'submit_test' topic.pk %}">
+    {% csrf_token %}
+    <div class="test-container">
+        {% for question in questions %}
+        <div class="question-block">
+            <h3>Вопрос {{ forloop.counter }}: {{ question.text }}</h3>
+            <div class="answers">
+                {% for answer in question.answers.all %}
+                <label class="answer-option">
+                    <input type="radio" name="question_{{ question.id }}" value="{{ answer.id }}" required>
+                    {{ answer.text }}
+                </label>
+                {% endfor %}
+            </div>
+        </div>
+        {% endfor %}
+        <button type="submit" class="submit-btn">Отправить ответы</button>
+    </div>
+</form>
+
+<div id="test-result" style="display: none; margin-top: 20px;">
+    <h3>Результат теста</h3>
+    <p>Набрано баллов: <span id="score"></span> из <span id="max-score"></span></p>
+    <p>Процент: <span id="percentage"></span>%</p>
+</div>
+
+<script>
+document.getElementById('test-form').addEventListener('submit', function(e) {
+    e.preventDefault();
+    
+    const formData = new FormData(this);
+    
+    fetch(this.action, {
+        method: 'POST',
+        body: formData,
+        headers: {
+            'X-Requested-With': 'XMLHttpRequest'
+        }
+    })
+    .then(response => response.json())
+    .then(data => {
+        document.getElementById('score').textContent = data.score;
+        document.getElementById('max-score').textContent = data.max_score;
+        document.getElementById('percentage').textContent = data.percentage;
+        document.getElementById('test-result').style.display = 'block';
+        
+        if (data.is_completed) {
+            alert('Поздравляем! Тест пройден успешно!');
+        }
+    })
+    .catch(error => {
+        console.error('Ошибка:', error);
+        alert('Произошла ошибка при отправке теста');
+    });
+});
+</script>
+{% else %}
+<p class="sel">Тест для этой темы пока не добавлен.</p>
+{% endif %}
+
+<div class="navigation" style="margin-top: 30px; text-align: center;">
+    {% if prev_topic %}
+    <a href="{% url 'topic_detail' prev_topic.pk %}" class="nav-btn">← Предыдущая тема</a>
+    {% endif %}
+    <a href="{% url 'subject_detail' subject.course.place.slug subject.course.number subject.slug %}" class="nav-btn">Назад к предмету</a>
+    {% if next_topic %}
+    <a href="{% url 'topic_detail' next_topic.pk %}" class="nav-btn">Следующая тема →</a>
+    {% endif %}
+</div>
+{% endblock %}

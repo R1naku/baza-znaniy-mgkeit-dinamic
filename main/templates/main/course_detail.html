@@ -1,0 +1,26 @@
+{% extends 'main/layout.html' %}
+{% load static %}
+
+{% block title %}{{ course.number }} курс - {{ course.place.name }}{% endblock %}
+
+{% block content %}
+<h1>{{ course.number }} курс - {{ course.place.name }}</h1>
+{% if course.description %}
+<p>{{ course.description }}</p>
+{% endif %}
+{% endblock %}
+
+{% block selles %}
+<h1 class="hhh1">Выбери нужный тебе предмет</h1>
+<div class="selk">
+    {% for subject in subjects %}
+    <a class="l{{ forloop.counter }}k{{ course.number }}p1" 
+       href="{% url 'subject_detail' course.place.slug course.number subject.slug %}"
+       style="border-color: {{ course.place.color }};">
+        {% if subject.icon %}{{ subject.icon }} {% endif %}{{ subject.name }}
+    </a>
+    {% empty %}
+    <p>Предметы пока не добавлены для этого курса.</p>
+    {% endfor %}
+</div>
+{% endblock %}

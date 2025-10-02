@@ -1,0 +1,32 @@
+{% extends 'main/layout.html' %}
+{% load static %}
+
+{% block title %}{{ subject.name }} - База знаний МГКЭИТ{% endblock %}
+
+{% block content %}
+<div class="content">
+    <h1>{{ subject.name }}</h1>
+    {% if subject.icon %}<span style="font-size: 3em;">{{ subject.icon }}</span>{% endif %}
+    {% if subject.description %}
+    <p>{{ subject.description }}</p>
+    {% endif %}
+</div>
+{% endblock %}
+
+{% block selles %}
+<h1 class="hhh1">Выбери нужную тебе тему</h1>
+<div class="selk">
+    {% for topic in topics %}
+    <a class="t{{ forloop.counter }}" 
+       href="{% url 'topic_detail' topic.pk %}"
+       style="border-color: {{ subject.course.place.color }};">
+        {{ topic.title }}
+        {% if user.is_authenticated and topic.id in completed_topics %}
+        <span style="color: green;">✓</span>
+        {% endif %}
+    </a>
+    {% empty %}
+    <p>Темы пока не добавлены для этого предмета.</p>
+    {% endfor %}
+</div>
+{% endblock %}
