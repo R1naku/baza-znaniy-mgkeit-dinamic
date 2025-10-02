@@ -1,5 +1,5 @@
 # baza-znaniy-mgkeit-dinamic
-![Версия](https://img.shields.io/badge/версия-0.1.0-turquoise)
+![Версия](https://img.shields.io/badge/версия-0.1.0-pink)
 ![Статус](https://img.shields.io/badge/статус-в%20разработке-pink)
 
 База знаний МГЭИТ - Динамическая версия
